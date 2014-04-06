@@ -1,0 +1,51 @@
+<!-- page start-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel panel-success">
+                    <header class="panel-heading">
+                        Masters - Communion Type
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-cog"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+					 <h3>New Communion Type</h3>
+					 <br/>
+					  <form action="/masters/createCT" method="post" class="form-horizontal">
+											<table class="table table-bordered table-info table-condensed">
+											<tbody>
+											<%if(flash && flash.err){%>
+											<tr><td colspan="2">
+											<ul class="alert alert-success">
+												<%Object.keys(flash.err).forEach(function(error){%>
+												  <li><%= JSON.stringify(flash.err[error])%></li>
+												<%})%>
+											</ul>
+											
+											</td></tr>
+											<%}%>
+											<tr>
+												<td class="info"><b>Description</b></td>
+												<td class="active"><input type="text" class="form-control" name="description"></td>
+											</tr>
+											<tr><td colspan="2" style="align:center">
+											<a class="btn  btn-primary" href="/masters/communionType">Cancel</a>
+											<button class="btn btn-warning" type="Submit"> Save</button></td></tr>
+											</tbody>
+											</table>
+											<input type="hidden" name="_csrf" value="<%= _csrf%>"/>
+											</form>
+                           
+					</div>
+        
+        <!-- page end-->
+		
+		
+	
+	
+
+
+

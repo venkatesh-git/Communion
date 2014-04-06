@@ -1,0 +1,2 @@
+# Communion
+### a Sails application

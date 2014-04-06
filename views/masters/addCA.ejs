@@ -1,0 +1,118 @@
+<!-- page start-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel panel-success">
+                    <header class="panel-heading">
+                        Masters - Communion Type
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-cog"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+					 <h3>New Communion Attribute</h3>
+					 <br/>
+					  <form action="/masters/createCA" method="post" class="form-horizontal">
+											<table class="table table-bordered table-info table-condensed">
+											<tbody>
+											<%if(flash && flash.err){%>
+											<tr><td colspan="2">
+											<ul class="alert alert-success">
+												<%Object.keys(flash.err).forEach(function(error){%>
+												  <li><%= JSON.stringify(flash.err[error])%></li>
+												<%})%>
+											</ul>
+											
+											</td></tr>
+											<%}%>
+											<tr>
+												<td class="info"><b>Communion Type</b></td>
+												<td class="info"><select id="cboCT" class="form-control" name="communionType"><option>Select...</option></select></td>
+											</tr>
+											<tr>
+												<td class="danger"><b>Description</b></td>
+												<td class="danger"><input type="text" class="form-control" name="description"></td>
+											</tr>
+											<tr>
+												<td class="info"><b>Internal Usage</b></td>
+												<td class="info"><input type="checkbox" value="0" id="label-switch" data-on-label="Yes" data-off-label="NO" name="isInternal"></td>
+											</tr>
+											<tr>
+												<td class="danger"><b>Data Type</b></td>
+												<td class="danger">
+												<select id="cboDT" class="form-control" name="dataType">
+												 <option>Select...</option>
+												 <option value="string">string</option>
+												 <option value="text">text</option>
+												 <option value="integer">integer</option>
+												 <option value="float">float</option>
+												 <option value="date">date</option>
+												 <option value="time">time</option>
+												 <option value="datetime">datetime</option>
+												 <option value="boolean">boolean</option>
+												 <option value="array">array</option>
+												 <option value="json">json</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td class="info"><b>Validation Type</b></td>
+												<td class="info">
+												<select id="cboVT" class="form-control" name="validationType">
+												 <option>Select...</option>
+												 <option value="required">Required</option>
+												 <option value="email">Email</option>
+												 <option value="notEmpty">Not empty</option>
+												 <option value="numeric">Numeric</option>
+												 <option value="max">Max</option>
+												 <option value="minLength">Min Length</option>
+												 <option value="maxLength">Max Length</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td class="danger"><b>Control</b></td>
+												<td class="danger">
+												<select id="cboControl" class="form-control" name="control">
+												 <option>Select...</option>
+												 <option value="Textbox">Textbox</option>
+												 <option value="Dropdown">Dropdown</option>
+												 <option value="Date">Date</option>
+												 <option value="Checkbox">Checkbox</option>
+												</select>
+												</td>
+											</tr>
+											<tr>
+												<td class="info"><b>Data Source</b></td>
+												<td class="info"><input type="text" class="form-control" name="dataSource"></td>
+											</tr>
+											<tr>
+												<td class="danger"><b>Value Member</b></td>
+												<td class="danger"><input type="text" class="form-control" name="valueMember" ></td>
+											</tr>
+											<tr>
+												<td class="info"><b>Text Member</b></td>
+												<td class="info"><input type="text" class="form-control" name="textMember"></td>
+											</tr>
+											<tr><td colspan="2" style="align:center">
+											<a class="btn  btn-primary" href="/masters/communionAttribute">Cancel</a>
+											<button class="btn btn-warning" type="Submit"> Save</button></td></tr>
+											</tbody>
+											</table>
+											<input type="hidden" name="_csrf" value="<%= _csrf%>"/>
+											</form>
+                           
+					</div>
+        
+        <!-- page end-->
+		
+		
+<script>
+amplify.publish( "loadCommunionTypes", '0' );	
+</script>	
+		
+	
+	
+
+
+

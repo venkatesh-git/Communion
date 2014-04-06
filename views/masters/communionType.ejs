@@ -1,0 +1,70 @@
+<!-- page start-->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <section class="panel panel-success">
+                    <header class="panel-heading">
+                        Masters - Communion Type
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-cog"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                    </header>
+                    <div class="panel-body">
+                           <div class="clearfix">
+						   <div class="btn-group">
+                                    <a class="btn btn-primary" href="/masters/addCT">
+										<i class="fa fa-plus"></i>&nbsp;Add New
+									</a>
+									<div>&nbsp;</div>
+                          </div>
+                                <div class="btn-group pull-right">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tools <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="#">Print</a></li>
+                                        <li><a href="#">Save as PDF</a></li>
+                                        <li><a href="#">Export to Excel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="demo_jui">
+							<table class="display" id="masterTable">
+                                <thead>
+                                <tr>
+                                    <th>Description</th>
+									<th>Status</th>
+									<th>Edit</th>
+									<th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% CTs.forEach(function(CT)  { %>
+                                <tr data-id="<%= CT.id%>" data-model="CommunionType">
+                                    <td><%= CT.description%></td>
+									<%if(CT.status==1){%>
+										<td>Active</td>
+									<%}else{%>
+										<td>Inctive</td>
+									<%}%>
+									<td><a class="btn btn-sm btn-primary" href="/masters/editCT/<%=CT.id%>">Edit</a></td>
+                                    <td><form action="/masters/destroyCT/<%=CT.id%>" method="post">
+									<input type="hidden" name="_method" value="delete"/>
+									<button class="btn btn-sm btn-warning" type="Submit"> Delete</button>
+									<input type="hidden" name="_csrf" value="<%= _csrf%>"/>
+									</form>
+                                </tr>
+								<%})%>
+                                </tbody>
+                            </table>
+							</div>
+                        </div>
+                    
+                </section>
+				</div>
+            </div>
+        
+        <!-- page end-->
+		
+		
